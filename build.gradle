@@ -1,0 +1,49 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group = 'org.aistemsplitter'
+version = '0.1.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+    withJavadocJar()
+    withSourcesJar()
+}
+
+repositories {
+    mavenCentral()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            pom {
+                name = 'AIStemSplitter Java SDK'
+                description = 'Official Java SDK for the AIStemSplitter public API.'
+                url = 'https://aistemsplitter.org'
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://opensource.org/license/mit'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'aistemsplitter'
+                        name = 'AIStemSplitter'
+                        email = 'support@aistemsplitter.org'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:https://github.com/aistemsplitter/aistemsplitter-java.git'
+                    developerConnection = 'scm:git:ssh://git@github.com:aistemsplitter/aistemsplitter-java.git'
+                    url = 'https://github.com/aistemsplitter/aistemsplitter-java'
+                }
+            }
+        }
+    }
+}
